@@ -1,7 +1,6 @@
 "use client";
 import { useVariables } from "@/context/variablesEstado";
 import Link from "next/link";
-import Image from 'next/image';
 
 export const CardInmuebles = () => {
     const { datafiltacion } = useVariables();
@@ -13,7 +12,7 @@ export const CardInmuebles = () => {
                     <div className="cards">
                         <h3 className="card-category">{inmueble.category}</h3>
                         <div className="card-inmueble__image">
-                            <Image src={inmueble.images[0]} alt={inmueble.title} width={500} height={300} />
+                            <img src={inmueble.images[0]} alt={inmueble.title} width={500} height={300} />
                         </div>
                         <div className="card-inmueble__info">
                             <h3 className="card-price">Price: {inmueble.price}</h3>

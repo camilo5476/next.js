@@ -1,15 +1,20 @@
 "use client";
 import { Slider } from "./slider";
+import { useFilters  } from "@/context/productosfetch";
 
+export const Otro = ({productid}) => {
+    const { result } = useFilters();
+    const item = result.find((inmueble) => inmueble.id === parseInt(productid));
 
-export const Otro = ({item}) => {
     return (
         <div className="mas-info">
             <h1>otro</h1>
         </div>
     )
 }
-export const CardItemComponents = ({item}) => {
+export const CardItemComponents = ({productid}) => {
+    const { result } = useFilters();
+    const item = result.find((inmueble) => inmueble.id === parseInt(productid));
     const {title, price, area, estrato, images, description, ubicacion, category, banos, habitaciones, id, infocontacto} = item
 
     return (
