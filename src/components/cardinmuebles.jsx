@@ -1,13 +1,25 @@
 "use client";
 import { useVariables } from "@/context/variablesEstado";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useFilters } from "@/context/productosfetch";
 
 export const CardInmuebles = () => {
+    const { result } = useFilters();
+    const [ final, setFinal ] = useState([]); 
     const { datafiltacion } = useVariables();
+    
+    useEffect(() => {
+        if (datafiltacion && datafiltacion.length > 0) {
+            setFinal(datafiltacion);
+        } else {
+            setFinal(result);
+        }
+    }, [datafiltacion, result]);
 
     return (
         <>
-            {datafiltacion && datafiltacion.map((inmueble) => (
+            {final && final.map((inmueble) => (
                 <Link href={`/inmuebles/${inmueble.id}`} key={inmueble.id}>
                     <div className="cards">
                         <h3 className="card-category">{inmueble.category}</h3>
